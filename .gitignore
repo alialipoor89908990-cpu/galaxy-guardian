@@ -1,0 +1,10 @@
+# وابستگی‌های نصبی (فقط ابزار بسته‌بندی — هسته بازی صفر وابستگی دارد)
+node_modules/
+www/
+dist-desktop/
+android/
+ios/
+src-tauri/
+server.log
+*.log
+.DS_Store

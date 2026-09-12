@@ -1,0 +1,59 @@
+{
+  "name": "galaxy-guardian",
+  "version": "1.0.0",
+  "description": "نگهبان کهکشان — بازی شوتر فضایی (HTML/CSS/JS خالص + آماده بسته‌بندی با Capacitor و Electron)",
+  "private": true,
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "node server.js",
+    "copy:web": "node scripts/copy-web.js",
+    "cap:add:android": "npm run copy:web && npx cap add android",
+    "cap:add:ios": "npm run copy:web && npx cap add ios",
+    "cap:sync": "npm run copy:web && npx cap sync",
+    "cap:open:android": "npx cap open android",
+    "electron:start": "electron .",
+    "electron:build": "electron-builder",
+    "pwa": "npx serve ."
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.1.2",
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/ios": "^6.1.2",
+    "electron": "^31.3.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.example.galaxyguardian",
+    "productName": "Galaxy Guardian",
+    "files": [
+      "index.html",
+      "css/**",
+      "js/**",
+      "icons/**",
+      "manifest.json",
+      "electron/**"
+    ],
+    "directories": {
+      "output": "dist-desktop"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "icons/icon-512.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.games",
+      "icon": "icons/icon-512.png"
+    },
+    "linux": {
+      "target": "AppImage",
+      "category": "Game",
+      "icon": "icons/icon-512.png"
+    }
+  }
+}
